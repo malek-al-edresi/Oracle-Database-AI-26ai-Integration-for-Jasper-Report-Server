@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  oracle-adb:
+    image: ghcr.io/oracle/adb-free:latest-26ai
+    container_name: oracle-adb-26ai
+    hostname: oracle-adb
+    networks:
+      - oracle-adb-network
+    ports:
+      - "1521:1522"
+      - "1522:1522"
+      - "8443:8443"
+      - "27017:27017"
+      - "8888:8888"
+    environment:
+      - WORKLOAD_TYPE=ATP
+      - WALLET_PASSWORD=Malek7788Wallet
+      - ADMIN_PASSWORD=Malek7788Adb
+    volumes:
+      - oracle-adb-data:/opt/oracle/oradata
+      - oracle-adb-logs:/opt/oracle/diag
+      - /home/eng-malek/oracle_wallet:/opt/oracle/admin/MYATP/wallet
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - "/dev/fuse:/dev/fuse"
+    restart: always
+
+networks:
+  oracle-adb-network:
+    external: true
+
+volumes:
+  oracle-adb-data:
+    external: true
+  oracle-adb-logs:
+    external: true

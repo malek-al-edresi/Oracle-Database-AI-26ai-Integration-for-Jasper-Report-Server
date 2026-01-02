@@ -15,12 +15,13 @@ services:
       - "8888:8888"
     environment:
       - WORKLOAD_TYPE=ATP
-      - WALLET_PASSWORD=Malek7788Wallet
-      - ADMIN_PASSWORD=Malek7788Adb
+      - WALLET_PASSWORD=${WALLET_PASSWORD}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     volumes:
       - oracle-adb-data:/opt/oracle/oradata
       - oracle-adb-logs:/opt/oracle/diag
-      - /home/eng-malek/oracle_wallet:/opt/oracle/admin/MYATP/wallet
+      # Update the path below to your local wallet directory or comment out if not using wallet yet
+      - ${WALLET_HOST_PATH:-./wallet}:/opt/oracle/admin/MYATP/wallet
     cap_add:
       - SYS_ADMIN
     devices:

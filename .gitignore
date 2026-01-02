@@ -1,0 +1,41 @@
+# Oracle Integration Ignore Rules
+
+# Environment Variables
+.env
+.env.local
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+._*
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Oracle Wallet (Sensitive)
+wallet/
+cwallet.sso
+ewallet.p12
+keystore.jks
+sqlnet.ora
+tnsnames.ora
+
+# Java/Jasper
+*.class
+*.jar
+*.war
+target/
+build/
